@@ -4,6 +4,7 @@
     "homepage": "https://github.com/IBM/plex",
     "license": "SIL Open Font License 1.1",
     "url": "https://github.com/IBM/plex/releases/download/v6.1.1/OpenType.zip",
+    "extract_dir": "test",
     "installer": {
         "script": [
             "Get-ChildItem $dir\\IBM-Plex-Sans -filter '*.otf' | ForEach-Object {",
