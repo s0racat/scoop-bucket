@@ -4,10 +4,9 @@
     "homepage": "https://github.com/IBM/plex",
     "license": "SIL Open Font License 1.1",
     "url": "https://github.com/IBM/plex/releases/download/v6.1.1/OpenType.zip",
-    "extract_dir": "test",
     "installer": {
         "script": [
-            "Get-ChildItem $dir\\IBM-Plex-Sans -filter '*.otf' | ForEach-Object {",
+            "Get-ChildItem $dir\\OpenType\\IBM-Plex-Sans -filter '*.otf' | ForEach-Object {",
             "   $fontdir = \"$env:LocalAppData\\Microsoft\\Windows\\Fonts\"",
             "   New-ItemProperty -Path 'HKCU:\\Software\\Microsoft\\Windows NT\\CurrentVersion\\Fonts' -Name $_.Name.Replace($_.Extension, ' (TrueType)') -Value \"$fontdir\\$($_.Name)\" -Force | Out-Null",
             "   Copy-Item $_.Fullname -destination \"$fontdir\"",
