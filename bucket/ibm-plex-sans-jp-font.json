@@ -7,7 +7,7 @@
     "installer": {
         "script": [
             "$fonts = (New-Object -ComObject Shell.Application).Namespace(0x14)",
-            "dir \"$dir/OpenType/IBM-Plex-Sans-JP/*.otf\" | %{ $fonts.CopyHere($_.fullname) }"
+            "dir \"$dir/OpenType/IBM-Plex-Sans-JP/hinted/*.otf\" | %{ $fonts.CopyHere($_.fullname) }"
         ]
     },
     "uninstaller": {
