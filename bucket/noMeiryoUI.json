@@ -14,7 +14,7 @@
 	],
 	"checkver": {
 		"url": "https://github.com/Tatsu-syo/noMeiryoUI",
-		"regex": "(?:v|V|TAG)?([\\d.]+)"
+		"regex": "Version ([\\d.]+)"
 	},
 	"autoupdate": {
 		"url": "https://github.com/Tatsu-syo/noMeiryoUI/releases/download/TAG-$version/noMeiryoUI$version.zip"
