@@ -21,7 +21,7 @@
             "   Remove-Item \"$fontdir\\$($_.Name)\" -Force -ErrorAction SilentlyContinue",
             "}"
         ]
-    }
+    },
     "checkver": "github",
     "autoupdate": {
         "url": "https://github.com/IBM/plex/releases/download/v$version/OpenType.zip"
