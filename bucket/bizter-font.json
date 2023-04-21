@@ -6,7 +6,7 @@
     "url": "https://github.com/yuru7/BIZTER/releases/download/v0.0.1/BIZTER_v0.0.1.zip",
     "pre_install": [
         "Move-Item \"$dir\\BIZTER_v$version\\*\" \"$dir\" -ErrorAction SilentlyContinue",
-        "Remove-Item -Recurse \"$dir\\BIZTER_$version\""
+        "Remove-Item -Recurse \"$dir\\BIZTER_v$version\""
     ],
     "installer": {
         "script": [
