@@ -27,7 +27,7 @@
         "    ensure \"$dir\\config\" | Out-Null",
         "    Copy-Item \"$env:LOCALAPPDATA\\Syncthing\\*\" \"$dir\\config\" -Exclude 'LOCK' -Recurse -Force",
         "}",
-        "if(!(Get-ScheduledTask -TaskName Syncthing)) {",
+        "if(!(Get-ScheduledTask -TaskName Syncthing 2>$null)) {",
             "$Action = New-ScheduledTaskAction -Execute \"$env:windir\\System32\\conhost.exe\" -Argument \"$env:userprofile\\scoop\\shims\\syncthing.exe --no-browser --no-console\"",
             "$Trigger = New-ScheduledTaskTrigger -AtLogon -User $env:USERNAME",
             "$Settings = New-ScheduledTaskSettingsSet -DontStopIfGoingOnBatteries -RunOnlyIfNetworkAvailable -NetworkName Network -AllowStartIfOnBatteries",
