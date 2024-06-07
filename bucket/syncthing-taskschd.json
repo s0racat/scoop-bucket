@@ -26,6 +26,13 @@
         "    info \"Copying old '$env:LOCALAPPDATA\\Syncthing' to '$persist_dir\\config'\"",
         "    ensure \"$dir\\config\" | Out-Null",
         "    Copy-Item \"$env:LOCALAPPDATA\\Syncthing\\*\" \"$dir\\config\" -Exclude 'LOCK' -Recurse -Force",
+        "}",
+        "if(!(Get-ScheduledTask -TaskName Syncthing)) {",
+            "$Action = New-ScheduledTaskAction -Execute "$env:windir\\System32\\conhost.exe" -Argument "$env:userprofile\\scoop\\shims\\syncthing.exe --no-browser --no-console"",
+            "$Trigger = New-ScheduledTaskTrigger -AtLogon -User $env:USERNAME",
+            "$Settings = New-ScheduledTaskSettingsSet -DontStopIfGoingOnBatteries -RunOnlyIfNetworkAvailable -NetworkName Network -AllowStartIfOnBatteries",
+            "$Settings.ExecutionTimeLimit = 'PT0S'",
+            "Register-ScheduledTask Syncthing -Action $Action -Trigger $Trigger -Settings $Settings",
         "}"
     ],
     "bin": [
