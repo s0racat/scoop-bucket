@@ -5,8 +5,8 @@
     "license": "Apache License Version 2.0",
     "url": "https://github.com/googlefonts/RobotoMono/archive/refs/heads/main.zip",
     "pre_install": [
-        "Move-Item \"$dir\\fonts\\ttf\\*\" \"$dir\" -ErrorAction SilentlyContinue",
-        "Remove-Item -Recurse \"$dir\\fonts\""
+        "Move-Item \"$dir\fonts\ttf\\*\" \"$dir\" -ErrorAction SilentlyContinue",
+        "Remove-Item -Recurse \"$dir\fonts\""
     ],
     "installer": {
         "script": [
@@ -20,5 +20,5 @@
             "    Write-Host \"To uninstall it completely, you have to delete it from the fonts in the control panel, which can be launched with ``control fonts``.\" -Foreground Magenta",
             "}"
         ]
-    },
+    }
 }
