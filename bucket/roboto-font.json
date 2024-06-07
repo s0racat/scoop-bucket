@@ -4,6 +4,10 @@
     "homepage": "https://fonts.google.com/specimen/Roboto",
     "license": "Apache License Version 2.0",
     "url": "https://github.com/googlefonts/roboto/releases/download/v2.136/roboto-hinted.zip",
+    "pre_install": [
+        "Move-Item \"$dir\\roboto-hinted\\*\" \"$dir\" -ErrorAction SilentlyContinue",
+        "Remove-Item -Recurse \"$dir\\roboto-hinted\""
+    ],
     "installer": {
         "script": [
             "$fonts = (New-Object -ComObject Shell.Application).Namespace(0x14)",
