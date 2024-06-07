@@ -44,6 +44,8 @@
         "if ($cmd -eq \"update\") {",
             "Write-Host 'Starting Syncthing task...'",
             "Start-ScheduledTask -TaskName Syncthing",
+            "Write-Host 'You may want to run the following command to remove the old firewall rules'",
+            "Write-Host '`Remove-NetFirewallRule -DisplayName 'syncthing.exe'`' -ForegroundColor Cyan"
         "}"
     ],
     "post_uninstall":[
