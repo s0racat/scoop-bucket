@@ -45,6 +45,7 @@
         "}"
     ],
     "post_uninstall":[
+        "Write-Host 'Unregistering Syncthing task...'",
         "Unregister-ScheduledTask -TaskName 'Syncthing' -Confirm:$false"
     ],
     "bin": [
