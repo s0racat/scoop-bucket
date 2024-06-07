@@ -3,7 +3,11 @@
     "description": "Roboto Mono is a monospaced addition to the Roboto type family. ",
     "homepage": "https://fonts.google.com/specimen/Roboto+Mono",
     "license": "Apache License Version 2.0",
-    "url": "https://fonts.google.com/download?family=Roboto%20Mono#/dl.7z",
+    "url": "https://github.com/googlefonts/RobotoMono/archive/refs/heads/main.zip",
+    "pre_install": [
+        "Move-Item \"$dir\\fonts\\ttf\\*\" \"$dir\" -ErrorAction SilentlyContinue",
+        "Remove-Item -Recurse \"$dir\\fonts\""
+    ],
     "installer": {
         "script": [
             "$fonts = (New-Object -ComObject Shell.Application).Namespace(0x14)",
@@ -17,7 +21,4 @@
             "}"
         ]
     },
-    "autoupdate": {
-        "url": "https://fonts.google.com/download?family=Roboto%20Mono#/dl.7z"
-    }
 }
