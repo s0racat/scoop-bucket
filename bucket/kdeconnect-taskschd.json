@@ -21,7 +21,7 @@
     ],
     "post_install":[
          "if(!(Get-ScheduledTask -TaskName KDEConnect 2>$null)) {",
-            "$Action = New-ScheduledTaskAction -Execute \"$env:userprofile\\scoop\\apps\\kdeconnect\\current\\bin\\kdeconnect-indicator.exe\"",
+            "$Action = New-ScheduledTaskAction -Execute \"$env:userprofile\\scoop\\apps\\kdeconnect-taskschd\\current\\bin\\kdeconnect-indicator.exe\"",
             "$Trigger = New-ScheduledTaskTrigger -AtLogon -User $env:USERNAME",
             "$Settings = New-ScheduledTaskSettingsSet -DontStopIfGoingOnBatteries -RunOnlyIfNetworkAvailable -NetworkName Network -AllowStartIfOnBatteries",
             "$Settings.ExecutionTimeLimit = 'PT0S'",
