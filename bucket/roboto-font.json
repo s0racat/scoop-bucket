@@ -3,7 +3,7 @@
     "description": "Roboto type family. ",
     "homepage": "https://fonts.google.com/specimen/Roboto",
     "license": "Apache License Version 2.0",
-    "url": "https://fonts.google.com/download?family=Roboto#/dl.7z",
+    "url": "https://github.com/googlefonts/roboto/releases/download/v2.136/roboto-hinted.zip",
     "installer": {
         "script": [
             "$fonts = (New-Object -ComObject Shell.Application).Namespace(0x14)",
@@ -16,8 +16,5 @@
             "    Write-Host \"To uninstall it completely, you have to delete it from the fonts in the control panel, which can be launched with ``control fonts``.\" -Foreground Magenta",
             "}"
         ]
-    },
-    "autoupdate": {
-        "url": "https://fonts.google.com/download?family=Roboto#/dl.7z"
     }
 }
