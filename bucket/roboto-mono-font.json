@@ -3,10 +3,10 @@
     "description": "Roboto Mono is a monospaced addition to the Roboto type family. ",
     "homepage": "https://fonts.google.com/specimen/Roboto+Mono",
     "license": "Apache License Version 2.0",
-    "url": "https://github.com/googlefonts/RobotoMono/archive/refs/heads/main.zip",
+    "url": "https://github.com/googlefonts/RobotoMono/archive/3479a228ba99f69d6e504e7d798a3f8e8239bbe7.zip",
     "pre_install": [
-        "Move-Item \"$dir\\RobotoMono-main\\fonts\\ttf\\*\" \"$dir\" -ErrorAction SilentlyContinue",
-        "Remove-Item -Recurse \"$dir\\RobotoMono-main\""
+        "Move-Item \"$dir\\RobotoMono-3479a228ba99f69d6e504e7d798a3f8e8239bbe7\\fonts\\ttf\\*\" \"$dir\" -ErrorAction SilentlyContinue",
+        "Remove-Item -Recurse \"$dir\\RobotoMono-3479a228ba99f69d6e504e7d798a3f8e8239bbe7\""
     ],
     "installer": {
         "script": [
