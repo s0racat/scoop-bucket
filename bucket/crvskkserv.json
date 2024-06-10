@@ -4,7 +4,7 @@
     "homepage": "https://github.com/nathancorvussolis/crvskkserv",
     "license": "MIT",
     "url": "https://github.com/nathancorvussolis/crvskkserv/releases/download/2.5.6/crvskkserv-2.5.6-x64.zip",
-    "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "hash": "8e36c5f9b43f951b011f7faabe93aac465c1ac84a4c71eae8f30bdd7ff9f65a1",
     "bin": "crvskkserv.exe",
     "checkver": "github",
     "autoupdate": {
