@@ -10,31 +10,31 @@
     "autoupdate": {
         "url": "https://github.com/nathancorvussolis/crvskkserv/releases/download/$version/crvskkserv-$version-x64.zip"
     },
-      "pre_install": [
+    "pre_install": [
         "if ($cmd -eq \"update\") {",
-            "write-host 'Stopping crvskkserv task...'",
-            "Stop-ScheduledTask -TaskName crvskkserv",
+        "write-host 'Stopping crvskkserv task...'",
+        "Stop-ScheduledTask -TaskName crvskkserv",
         "}"
     ],
-    "post_install":[
+    "post_install": [
         "if(!(Get-ScheduledTask -TaskName crvskkserv 2>$null)) {",
-            "$Action = New-ScheduledTaskAction -Execute \"$env:userprofile\\scoop\\shims\\crvskkserv.exe\"",
-            "$Trigger = New-ScheduledTaskTrigger -AtLogon -User $env:USERNAME",
-            "$Settings = New-ScheduledTaskSettingsSet -DontStopIfGoingOnBatteries -RunOnlyIfNetworkAvailable -AllowStartIfOnBatteries",
-            "$Settings.ExecutionTimeLimit = 'PT0S'",
-            "Register-ScheduledTask crvskkserv -Action $Action -Trigger $Trigger -Settings $Settings",
-            "Write-Host 'Starting crvskkserv task...'",
-            "Start-ScheduledTask -TaskName crvskkserv",
+        "$Action = New-ScheduledTaskAction -Execute \"$env:userprofile\\scoop\\shims\\crvskkserv.exe\"",
+        "$Trigger = New-ScheduledTaskTrigger -AtLogon -User $env:USERNAME",
+        "$Settings = New-ScheduledTaskSettingsSet -DontStopIfGoingOnBatteries -RunOnlyIfNetworkAvailable -AllowStartIfOnBatteries",
+        "$Settings.ExecutionTimeLimit = 'PT0S'",
+        "Register-ScheduledTask crvskkserv -Action $Action -Trigger $Trigger -Settings $Settings",
+        "Write-Host 'Starting crvskkserv task...'",
+        "Start-ScheduledTask -TaskName crvskkserv",
         "}",
         "if ($cmd -eq \"update\") {",
-            "Write-Host 'Starting crvskkserv task...'",
-            "Start-ScheduledTask -TaskName crvskkserv",
+        "Write-Host 'Starting crvskkserv task...'",
+        "Start-ScheduledTask -TaskName crvskkserv",
         "}"
     ],
-    "post_uninstall":[
+    "post_uninstall": [
         "write-host 'Stopping crvskkserv task...'",
         "Stop-ScheduledTask -TaskName crvskkserv",
         "Write-Host 'Unregistering crvskkserv task...'",
         "Unregister-ScheduledTask -TaskName 'crvskkserv' -Confirm:$false"
-    ],
+    ]
 }
