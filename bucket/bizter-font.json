@@ -10,24 +10,8 @@
     ],
     "installer": {
         "script": [
-               "Start-Job -Name DetectAndClosePrompt -Scriptblock {",
-        "    [void] [System.Reflection.Assembly]::Load(\"System.Windows.Forms\")",
-        "    [void] [System.Reflection.Assembly]::Load(\"Microsoft.VisualBasic\")",
-        "    while ($true) {",
-        "        $windowPrompt = Get-Process -ErrorAction SilentlyContinue | Where-Object { $_.MainWindowTitle -like \"*フォントをインストール*\" }",
-        "        if ($windowPrompt) {",
-        "            [Microsoft.VisualBasic.Interaction]::AppActivate($windowPrompt.ID)",
-        "            Start-Sleep -Seconds 1",
-        "            [System.Windows.Forms.SendKeys]::SendWait(\"{Enter}\")",
-        "            Start-Sleep -Seconds 2",
-        "        } else {",
-        "            Start-Sleep -Seconds 1",
-        "        }",
-        "    }",
-        "}",
         "$fonts = (New-Object -ComObject Shell.Application).Namespace(0x14)",
-        "Get-ChildItem \"$dir\\*.ttf\" | ForEach-Object { $fonts.CopyHere($_.FullName) }",
-        "Get-Job -Name \"DetectAndClosePrompt\" | Remove-Job -Force"
+        "Get-ChildItem \"$dir\\*.ttf\" | ForEach-Object { $fonts.CopyHere($_.FullName) }"
         ]
     },
     "uninstaller": {
@@ -36,9 +20,5 @@
             "    Write-Host \"To uninstall it completely, you have to delete it from the fonts in the control panel, which can be launched with ``control fonts``.\" -Foreground Magenta",
             "}"
         ]
-    },
-    "checkver": "github",
-    "autoupdate": {
-        "url": "https://github.com/yuru7/BIZTER/releases/download/v$version/BIZTER_v$version.zip"
     }
 }
