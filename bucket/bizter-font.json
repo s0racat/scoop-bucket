@@ -9,22 +9,25 @@
         "Remove-Item -Recurse \"$dir\\BIZTER_v$version\""
     ],
     "installer": {
-        "script": [
-            "Start-Job –Name DetectAndClosePrompt –Scriptblock {",
-  "$i=1",
-  "[void] [System.Reflection.Assembly]::LoadWithPartialName(\"'System.Windows.Forms\")",
-  "[void] [System.Reflection.Assembly]::LoadWithPartialName(\"'Microsoft.VisualBasic\")",
-  "while ($i -eq 1) { ",
-    "$windowPrompt = Get-Process -ErrorAction SilentlyContinue |? {$_.MainWindowTitle -like \"*Installing Fonts*\"}", 
-    "[Microsoft.VisualBasic.Interaction]::AppActivate($windowPrompt.ID)",
-    "[System.Windows.Forms.SendKeys]::SendWait(\"{Enter}\")",
-    "sleep 2" ,
-  "}",
-"}",
-            "$fonts = (New-Object -ComObject Shell.Application).Namespace(0x14)",
-            "dir \"$dir/*.ttf\" | %{ $fonts.CopyHere($_.fullname) }",
-    "Get-Job DetectAndClosePrompt | Remove-Job -Force"
-        ]
+         "script": [
+        "Start-Job -Name DetectAndClosePrompt -Scriptblock {",
+        "[void] [System.Reflection.Assembly]::Load(\"System.Windows.Forms\")",
+        "[void] [System.Reflection.Assembly]::Load(\"Microsoft.VisualBasic\")",
+        "while ($true) {",
+        "$windowPrompt = Get-Process -ErrorAction SilentlyContinue | Where-Object { $_.MainWindowTitle -like \"*Installing Fonts*\" }",
+        "if ($windowPrompt) {",
+        "[Microsoft.VisualBasic.Interaction]::AppActivate($windowPrompt.ID)",
+        "[System.Windows.Forms.SendKeys]::SendWait(\"{Enter}\")",
+        "Start-Sleep -Seconds 2",
+        "} else {",
+        "Start-Sleep -Seconds 1",
+        "}",
+        "}",
+        "}",
+        "$fonts = (New-Object -ComObject Shell.Application).Namespace(0x14)",
+        "Get-ChildItem \"$dir\\*.ttf\" | ForEach-Object { $fonts.CopyHere($_.FullName) }",
+        "Get-Job DetectAndClosePrompt | Remove-Job -Force"
+    ]
     },
     "uninstaller": {
         "script": [
