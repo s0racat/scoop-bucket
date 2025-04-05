@@ -16,8 +16,5 @@
             "    Write-Host \"To uninstall it completely, you have to delete it from the fonts in the control panel, which can be launched with ``control fonts``.\" -Foreground Magenta",
             "}"
         ]
-    },
-    "autoupdate": {
-        "url": "https://github.com/googlefonts/noto-cjk/releases/download/Sans2.004/06_NotoSansCJKjp.zip"
     }
 }
