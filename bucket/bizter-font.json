@@ -15,7 +15,7 @@
         "[void] [System.Reflection.Assembly]::Load(\"Microsoft.VisualBasic\")",
         "while ($true) {",
         "$windowPrompt = Get-Process -ErrorAction SilentlyContinue | Where-Object { $_.MainWindowTitle -like \"*Installing Fonts*\" }",
-             "echo $windowPrompt.ID",
+             "write-host $windowPrompt",
         "if ($windowPrompt) {",
         "[Microsoft.VisualBasic.Interaction]::AppActivate($windowPrompt.ID)",
         "[System.Windows.Forms.SendKeys]::SendWait(\"{Enter}\")",
