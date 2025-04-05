@@ -20,9 +20,5 @@
             "    Write-Host \"To uninstall it completely, you have to delete it from the fonts in the control panel, which can be launched with ``control fonts``.\" -Foreground Magenta",
             "}"
         ]
-    },
-    "checkver": "github",
-    "autoupdate": {
-        "url": "https://github.com/yuru7/PlemolJP/releases/download/v$version/PlemolJP_NF_v$version.zip"
     }
 }
