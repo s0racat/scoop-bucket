@@ -1,6 +1,6 @@
 {
     "version": "0.0.1",
-    "description": " BIZTER は、UI 向けフォント Inter と、ユニバーサルデザインフォントの BIZ UDPゴシックの合成フォントです。",
+    "description": "BIZTER は、UI 向けフォント Inter と、ユニバーサルデザインフォントの BIZ UDPゴシックの合成フォントです。",
     "homepage": "https://github.com/yuru7/BIZTER",
     "license": "SIL Open Font License 1.1",
     "url": "https://github.com/yuru7/BIZTER/releases/download/v0.0.1/BIZTER_v0.0.1.zip",
@@ -9,25 +9,32 @@
         "Remove-Item -Recurse \"$dir\\BIZTER_v$version\""
     ],
     "installer": {
-         "script": [
-        "Start-Job -Name DetectAndClosePrompt -Scriptblock {",
-        "[void] [System.Reflection.Assembly]::Load(\"System.Windows.Forms\")",
-        "[void] [System.Reflection.Assembly]::Load(\"Microsoft.VisualBasic\")",
-        "while ($true) {",
-        "$windowPrompt = Get-Process -ErrorAction SilentlyContinue | Where-Object { $_.MainWindowTitle -like \"*Installing Fonts*\" }",
-             "write-host $windowPrompt",
-        "if ($windowPrompt) {",
-        "[Microsoft.VisualBasic.Interaction]::AppActivate($windowPrompt.ID)",
-        "[System.Windows.Forms.SendKeys]::SendWait(\"{Enter}\")",
-        "Start-Sleep -Seconds 2",
-        "} else {",
-        "Start-Sleep -Seconds 1",
-        "}",
-        "}",
-        "}",
-        "$fonts = (New-Object -ComObject Shell.Application).Namespace(0x14)",
-        "start-job -ScriptBlock { Get-ChildItem \"$dir\\*.ttf\" | ForEach-Object { $fonts.CopyHere($_.FullName) } }"
-    ]
+        "script": [
+            "Start-Job -Name DetectAndClosePrompt -Scriptblock {",
+            "    [void] [System.Reflection.Assembly]::Load(\"System.Windows.Forms\")",
+            "    [void] [System.Reflection.Assembly]::Load(\"Microsoft.VisualBasic\")",
+            "    while ($true) {",
+            "        $windowPrompt = Get-Process -ErrorAction SilentlyContinue | Where-Object { $_.MainWindowTitle -like \"*Installing Fonts*\" }",
+            "        Write-Host $windowPrompt",
+            "        if ($windowPrompt) {",
+            "            [Microsoft.VisualBasic.Interaction]::AppActivate($windowPrompt.ID)",
+            "            [System.Windows.Forms.SendKeys]::SendWait(\"{Enter}\")",
+            "            Start-Sleep -Seconds 2",
+            "        } else {",
+            "            Start-Sleep -Seconds 1",
+            "        }",
+            "    }",
+            "}",
+            "$fonts = (New-Object -ComObject Shell.Application).Namespace(0x14)",
+            "Get-ChildItem \"$dir\\*.ttf\" | ForEach-Object {",
+            "    $fontPath = $_.FullName",
+            "    Start-Job -ScriptBlock {",
+            "        param($fontPath)",
+            "        $fonts = (New-Object -ComObject Shell.Application).Namespace(0x14)",
+            "        $fonts.CopyHere($fontPath)",
+            "    } -ArgumentList $fontPath",
+            "}"
+        ]
     },
     "uninstaller": {
         "script": [
