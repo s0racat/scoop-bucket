@@ -11,7 +11,7 @@
     "installer": {
         "script": [
             "$fonts = (New-Object -ComObject Shell.Application).Namespace(0x14)",
-            "dir \"$dir/*.ttf\" | %{ $fonts.CopyHere($_.fullname) }"
+            "dir \"$dir/*.ttf\" | %{ $fonts.CopyHere($_.fullname,0x14) }"
         ]
     },
     "uninstaller": {
