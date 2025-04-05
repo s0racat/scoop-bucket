@@ -16,9 +16,5 @@
             "    Write-Host \"To uninstall it completely, you have to delete it from the fonts in the control panel, which can be launched with ``control fonts``.\" -Foreground Magenta",
             "}"
         ]
-    },
-    "checkver": "github",
-    "autoupdate": {
-        "url": "https://github.com/s0racat/RobotoNotoJP/releases/download/v$version/RobotoNotoJP.zip"
     }
 }
