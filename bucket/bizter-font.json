@@ -26,8 +26,7 @@
         "}",
         "}",
         "$fonts = (New-Object -ComObject Shell.Application).Namespace(0x14)",
-        "Get-ChildItem \"$dir\\*.ttf\" | ForEach-Object { $fonts.CopyHere($_.FullName) }",
-        "Get-Job DetectAndClosePrompt | Remove-Job -Force"
+        "Get-ChildItem \"$dir\\*.ttf\" | ForEach-Object { $fonts.CopyHere($_.FullName) }"
     ]
     },
     "uninstaller": {
