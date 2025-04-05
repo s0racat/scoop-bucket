@@ -13,12 +13,7 @@
             "Start-Job -Name InstallFonts -Scriptblock {",
             "    [void] [System.Reflection.Assembly]::Load(\"System.Windows.Forms\")",
             "    [void] [System.Reflection.Assembly]::Load(\"Microsoft.VisualBasic\")",
-            "    $fonts = (New-Object -ComObject Shell.Application).Namespace(0x14)",
-            "    Get-ChildItem \"$using:dir\\*.ttf\" | ForEach-Object {",
-            "        $fontPath = $_.FullName",
-            "        $fonts.CopyHere($fontPath)",
-            "    }",
-            "    while ($true) {",
+                "    while ($true) {",
             "        $windowPrompt = Get-Process -ErrorAction SilentlyContinue | Where-Object { $_.MainWindowTitle -like \"*Installing Fonts*\" }",
             "        if ($windowPrompt) {",
             "            [Microsoft.VisualBasic.Interaction]::AppActivate($windowPrompt.ID)",
@@ -29,6 +24,12 @@
             "            Start-Sleep -Seconds 1;",
             "        }",
             "    }",
+            "    $fonts = (New-Object -ComObject Shell.Application).Namespace(0x14)",
+            "    Get-ChildItem \"$using:dir\\*.ttf\" | ForEach-Object {",
+            "        $fontPath = $_.FullName",
+            "        $fonts.CopyHere($fontPath)",
+            "    }",
+        
             "}"
         ]
     },
