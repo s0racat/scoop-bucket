@@ -19,16 +19,16 @@
         "64bit": {
             "shortcuts": [
                 [
-                    "VeraCrypt\\VeraCrypt-x64.exe",
-                    "VeraCrypt\\VeraCrypt"
+                    "VeraCrypt\\$version\\VeraCrypt-x64.exe",
+                    "VeraCrypt"
                 ]
             ]
         },
         "32bit": {
             "shortcuts": [
                 [
-                    "VeraCrypt\\VeraCrypt.exe",
-                    "VeraCrypt\\VeraCrypt"
+                    "VeraCrypt\\$version\\VeraCrypt.exe",
+                    "VeraCrypt"
                 ]
             ]
         }
