@@ -9,8 +9,6 @@
         "script": [
             "Start-Process -Wait \"$dir\\setup.exe\"",
             "Remove-Item -Recurse \"$dir\\setup.exe\"",
-            "Move-Item \"$dir\\VeraCrypt\\*\" -Destination \"$dir\"",
-            "Remove-Item -Recurse \"$dir\\VeraCrypt\"",
             "$file = 'Configuration.xml'",
             "if (!(Test-Path \"$persist_dir\\$file\")) {",
             "    New-Item \"$dir\\$file\" -Type File | Out-Null",
@@ -21,16 +19,16 @@
         "64bit": {
             "shortcuts": [
                 [
-                    "VeraCrypt-x64.exe",
-                    "VeraCrypt"
+                    "VeraCrypt\\VeraCrypt-x64.exe",
+                    "VeraCrypt\\VeraCrypt"
                 ]
             ]
         },
         "32bit": {
             "shortcuts": [
                 [
-                    "VeraCrypt.exe",
-                    "VeraCrypt"
+                    "VeraCrypt\\VeraCrypt.exe",
+                    "VeraCrypt\\VeraCrypt"
                 ]
             ]
         }
