@@ -56,6 +56,7 @@ jobs:
         uses: actions/checkout@main
         with:
           fetch-depth: 1
+          path: 'my_bucket'
       - name: Checkout Scoop
         uses: actions/checkout@main
         with:
@@ -66,10 +67,13 @@ jobs:
         run: |
           $env:SCOOP_HOME="$(Convert-Path '.\scoop_core')"
           .\scoop_core\test\bin\init.ps1
-          .\bin\formatjson.ps1
+          .\my_bucket\bin\formatjson.ps1
+
+      
       - name: Create PR
         uses: peter-evans/create-pull-request@v7
         with:
+          path: my_bucket
           author: '${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>'
           branch: formatjson
           base: ${{ github.head_ref }}
