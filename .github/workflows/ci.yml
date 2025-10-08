@@ -68,8 +68,6 @@ jobs:
           $env:SCOOP_HOME="$(Convert-Path '.\scoop_core')"
           .\scoop_core\test\bin\init.ps1
           .\my_bucket\bin\formatjson.ps1
-
-      
       - name: Create PR
         uses: peter-evans/create-pull-request@v7
         with:
