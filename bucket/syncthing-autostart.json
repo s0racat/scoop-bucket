@@ -39,7 +39,7 @@
     "$Shortcut = $WshShell.CreateShortcut($lnk)",
     "$Shortcut.TargetPath = \"C:\\Windows\\System32\\conhost.exe\"",
 "$Shortcut.Arguments = \"syncthing.exe --home `\"$dir\\config`\" --no-upgrade -no-console -no-browser\"",
-      "$Shortcut.Save()",
+      "$Shortcut.Save()"
   ],
   "pre_uninstall": [
     "write-host 'Stopping syncthing process...'",
