@@ -12,11 +12,7 @@
     },
     "persist": "crvskkserv.ini",
     "pre_install": [
-        "if (-not (Test-Path \"$persist_dir\\crvskkserv.ini\")) { Set-Content \"$dir\\crvskkserv.ini\" '' -Encoding Ascii | Out-Null }",
-        "if ($cmd -eq \"update\") {",
-        "write-host 'Stopping crvskkserv process...'",
-        "stop-process -id (get-process -Name 'crvskkserv').id",
-        "}"
+        "if (-not (Test-Path \"$persist_dir\\crvskkserv.ini\")) { Set-Content \"$dir\\crvskkserv.ini\" '' -Encoding Ascii | Out-Null }"
     ],
     "post_install": [
         "$WshShell = New-Object -comObject WScript.Shell",
@@ -25,11 +21,7 @@
         "$Shortcut = $WshShell.CreateShortcut($lnk)",
         "$Shortcut.TargetPath = \"crvskkserv.exe\"",
         "$Shortcut.Save()",
-        "Start-Process crvskkserv.exe",
-        "if ($cmd -eq \"update\") {",
-        "Write-Host 'Starting crvskkserv process...'",
-        "Start-Process crvskkserv.exe",
-        "}"
+        "Start-Process crvskkserv.exe"
     ],
     "pre_uninstall": [
         "write-host 'Stopping crvskkserv process...'",
