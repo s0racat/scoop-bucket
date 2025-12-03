@@ -11,9 +11,7 @@
         "url": "https://github.com/nathancorvussolis/crvskkserv/releases/download/$version/crvskkserv-$version-x64.zip"
     },
     "persist": "crvskkserv.ini",
-    "pre_install": [
-        "if (-not (Test-Path \"$persist_dir\\crvskkserv.ini\")) { Set-Content \"$dir\\crvskkserv.ini\" '' -Encoding Ascii | Out-Null }"
-    ],
+    "pre_install": "if (-not (Test-Path \"$persist_dir\\crvskkserv.ini\")) { Set-Content \"$dir\\crvskkserv.ini\" '' -Encoding Ascii | Out-Null }",
     "post_install": [
         "$WshShell = New-Object -comObject WScript.Shell",
         "$startup = [environment]::getfolderpath(\"Startup\")",
