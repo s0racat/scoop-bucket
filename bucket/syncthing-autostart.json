@@ -49,7 +49,11 @@
         "stop-process -id (get-process -Name 'syncthing').id",
         "$startup = [environment]::getfolderpath(\"Startup\")",
         "$lnk = \"$startup\\syncthing.lnk\"",
-        "Remove-item $lnk"
+        "Remove-item $lnk",
+         "if ($cmd -eq \"update\") {",
+        "write-host 'Stopping syncthing process...'",
+        "stop-process -id (get-process -Name 'syncthing').id",
+        "}"
     ],
     "bin": [
         [
